@@ -1,0 +1,5 @@
+# Coloamos o declaramos aqui los archivos que no queremos que sean subidos al git hub o que sean innecesarios porque se pueden generan
+
+dist/
+node_modules/
+
