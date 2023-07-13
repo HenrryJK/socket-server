@@ -51,7 +51,7 @@ export default class Server{
             console.log('Cliente conectado.');
 
             // mensajes
-            socket.mensaje(cliente);
+            socket.mensaje(cliente , this.io);
 
           /// para saber cuando un cliente se desconecta
             // desconectar
