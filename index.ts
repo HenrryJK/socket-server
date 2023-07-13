@@ -6,7 +6,11 @@ import cors from "cors";
 // bodyparser
 import bodyParser from 'body-parser';
 
-const server = new Server();
+// Anterir forma 
+// const server = new Server(); 
+
+// incluyendo Patron singleton , me aseguro de tener sola y unica  instancia
+const server = Server.instance;
 
 // Body Parser
 server.app.use(bodyParser.urlencoded({extended: true}));
