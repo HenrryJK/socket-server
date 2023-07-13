@@ -26,7 +26,6 @@ server.app.use('/' , router)
 
 server.start( () =>{
     console.log(`Servidor corriendo en el puerto ${SERVER_PORT}`);
-
     // funciona igual de esta forma
     // console.log(`Servidor corriendo en el puerto ${server.port}`);
 });

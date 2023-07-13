@@ -4,9 +4,12 @@ import { SERVER_PORT } from "../global/environment";
 
 import socketIO from 'socket.io';
 import http from 'http';
+
+// importando socket
+import * as socket from '../sockets/socket';
 export default class Server{
 
-    private static _instance: Server;
+    private static _intance: Server;
 
 
     public app: express.Application;
@@ -31,7 +34,7 @@ export default class Server{
         // patron singleton
         public static get instance(){
             // si ya existe una instancia ,  sino existe  va a crear una nueva instancia
-            return this._instance || (this._instance = new this());
+            return this._intance || (this._intance = new this());
         }
 
     /// Anteior forma de levantar nuestro servidor 
@@ -39,13 +42,21 @@ export default class Server{
     //     this.app.listen(this.port , callback);
     // }
 
-    // nuevo forma ya que utilizamos sockets 
-    private escucharSockets () {
+    // nuevo forma ya que utilizamos sockets  - para escuchar eventos
+    private escucharSockets() {
         console.log('Escuchando conexiones - sockets');
             // on , es para escuchar un evento
         this.io.on('connection' , cliente =>{
 
-            console.log('Cliente conectado');
+            console.log('Cliente conectado.');
+
+            // mensajes
+            socket.mensaje(cliente);
+
+          /// para saber cuando un cliente se desconecta
+            // desconectar
+            socket.desconectar(cliente);
+
         });
     }
 
